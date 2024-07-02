@@ -1,5 +1,3 @@
-<h2>Create Floating Action Button in Oracle Apex</h2>
-
 1. List Creation:
     1. Create a List from Shared Component as FAB_LIST
     2. Create List items with Icon
