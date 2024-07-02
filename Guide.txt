@@ -1,0 +1,115 @@
+<h2>Create Floating Action Button in Oracle Apex</h2>
+
+1. List Creation:
+    1. Create a List from Shared Component as FAB_LIST
+    2. Create List items with Icon
+
+
+2. Templete Creation:
+    1. Go Templete from Shared Component
+    2. Duplicate Menu Popup templete as FAB Menu Popup
+
+
+3. FAB_MENU_POPUP Customization:
+    1. Go to 'Before List Entry' Section and replace existing codes with these below:
+        List Template Before Rows (for example <table> <tr>)
+          <div id="#PARENT_STATIC_ID#_menu" class="fab #COMPONENT_CSS_CLASSES#"><a class="fab-fab fab-btn-large" id="fabBtn"><span class="fa fa-bars"></span></a><ul class="fab-menu">
+        List Template Current
+          <li data-id="#A01#" data-disabled="#A02#" data-hide="#A03#" data-shortcut="#A05#" data-icon="#ICON_CSS_CLASSES#"><a href="#LINK#" title="#A04#" class="fab-fab fab-btn-sm scale-transition scale-out u-color-#A01#-bg"><span class="#ICON_CSS_CLASSES#"></span></a></li>
+        List Template Current with Sublist Items
+          <li data-id="#A01#" data-disabled="#A02#" data-hide="#A03#" data-shortcut="#A05#" data-icon="#ICON_CSS_CLASSES#"><a href="#LINK#" title="#A04#" class="fab-fab fab-btn-sm scale-transition scale-out u-color-#A01#-bg"><span class="#ICON_CSS_CLASSES#"></span></a>
+        List Template Noncurrent
+          <li data-id="#A01#" data-disabled="#A02#" data-hide="#A03#" data-shortcut="#A05#" data-icon="#ICON_CSS_CLASSES#"><a href="#LINK#" title="#A04#" class="fab-fab fab-btn-sm scale-transition scale-out u-color-#A01#-bg"><span class="#ICON_CSS_CLASSES#"></span></a></li>
+        List Template Noncurrent with Sublist Items
+          <li data-id="#A01#" data-disabled="#A02#" data-hide="#A03#" data-shortcut="#A05#" data-icon="#ICON_CSS_CLASSES#"><a href="#LINK#" title="#A04#" class="fab-fab fab-btn-sm scale-transition scale-out u-color-#A01#-bg"><span class="#ICON_CSS_CLASSES#"></span></a>
+
+
+  2. Go to 'JavaScript' Section  and replace existing codes with these below:
+      Execute when Page Loads
+        <script>
+            $('#fabBtn').click(function() {
+            $('.fab-btn-sm').toggleClass('scale-out');
+            if (!$('.fab-card').hasClass('scale-out')) {
+              $('.fab-card').toggleClass('scale-out');
+            }
+          });
+          
+          $('.fab-btn-sm').click(function() {
+            var btn = $(this);
+            var card = $('.fab-card');
+            if ($('.fab-card').hasClass('scale-out')) {
+              $('.fab-card').toggleClass('scale-out');
+            }
+          });
+        </script>
+
+  
+4. Now Create a Region on specific page / Global Page
+   Type  :  List
+   Source:  FAB_LIST
+   Template:  Blank with Attributes
+   Attribute:  List Template: FAB Menu Popup
+
+
+5. Now Apply the styles in Inline CSS / HTML Header section
+   <style>
+      .fab {
+        z-index:100;
+        position: fixed;
+        bottom: 45px;
+        right: 24px;
+        height: 70px;
+      }
+      .fab-fab {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #009688;
+        vertical-align: middle;
+        text-decoration: none;
+        text-align: center;
+        transition: 0.2s ease-out;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        color: #FFF;
+      }
+      .fab-btn-sm > span{
+        margin: 10px;
+      }
+      .fab-fab:hover {
+        background-color: #4db6ac;
+        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+      }
+      .fab-btn-large {
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+      }
+      .fab-btn-large > span{
+        vertical-align: text-bottom;
+      }
+      .fab-menu {
+          position: absolute;
+          right: -160px;
+          left: -160px;
+          bottom: 300%;
+          /* transform: translateY(-50%); */
+          /* height: 100%; */
+          /* width: 500px; */
+          list-style: none;
+          text-align: left;
+          rotate: 270deg;
+      }
+      .fab-menu li {
+        display: inline-block;
+        margin-right: 10px;
+      rotate: 90deg;
+      }
+      .scale-transition { transition: transform 0.3s cubic-bezier(0.53, 0.01, 0.36, 1.63) !important; }
+      .scale-transition.scale-out {
+        transform: scale(0);
+        transition: transform 0.2s !important;
+      }
+      .scale-transition.scale-in { transform: scale(1); }
+    </style>
