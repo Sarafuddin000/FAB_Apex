@@ -13,13 +13,32 @@
         List Template Before Rows (for example <table> <tr>)
           <div id="#PARENT_STATIC_ID#_menu" class="fab #COMPONENT_CSS_CLASSES#"><a class="fab-fab fab-btn-large" id="fabBtn"><span class="fa fa-bars"></span></a><ul class="fab-menu">
         List Template Current
-          <li data-id="#A01#" data-disabled="#A02#" data-hide="#A03#" data-shortcut="#A05#" data-icon="#ICON_CSS_CLASSES#"><a href="#LINK#" title="#A04#" class="fab-fab fab-btn-sm scale-transition scale-out u-color-#A01#-bg"><span class="#ICON_CSS_CLASSES#"></span></a></li>
+            <li data-id="#A01#" data-disabled="#A02#" data-hide="#A03#" data-shortcut="#A05#" 
+            data-icon="#ICON_CSS_CLASSES#"><a href="#LINK#" title="#A04#" class="fab-fab 
+            fab-btn-sm scale-transition scale-out u-color-#A01#-bg con-tooltip">
+            <span class="#ICON_CSS_CLASSES#"></span><div class="tooltip">
+            <p>#TEXT#</p>
+            </div></a></li>
         List Template Current with Sublist Items
-          <li data-id="#A01#" data-disabled="#A02#" data-hide="#A03#" data-shortcut="#A05#" data-icon="#ICON_CSS_CLASSES#"><a href="#LINK#" title="#A04#" class="fab-fab fab-btn-sm scale-transition scale-out u-color-#A01#-bg"><span class="#ICON_CSS_CLASSES#"></span></a>
+            <li data-id="#A01#" data-disabled="#A02#" data-hide="#A03#" data-shortcut="#A05#" 
+            data-icon="#ICON_CSS_CLASSES#"><a href="#LINK#" title="#A04#" class="fab-fab fab-btn-sm scale-transition 
+            scale-out u-color-#A01#-bg con-tooltip"><span class="#ICON_CSS_CLASSES#"></span><div class="tooltip">
+            <p>#TEXT#</p>
+            </div></a>
+
         List Template Noncurrent
-          <li data-id="#A01#" data-disabled="#A02#" data-hide="#A03#" data-shortcut="#A05#" data-icon="#ICON_CSS_CLASSES#"><a href="#LINK#" title="#A04#" class="fab-fab fab-btn-sm scale-transition scale-out u-color-#A01#-bg"><span class="#ICON_CSS_CLASSES#"></span></a></li>
+            <li data-id="#A01#" data-disabled="#A02#" data-hide="#A03#" data-shortcut="#A05#" 
+            data-icon="#ICON_CSS_CLASSES#"><a href="#LINK#" title="#A04#" class="fab-fab fab-btn-sm scale-transition 
+            scale-out u-color-#A01#-bg con-tooltip"><span class="#ICON_CSS_CLASSES#"></span><div class="tooltip">
+            <p>#TEXT#</p>
+            </div></a></li>
+
         List Template Noncurrent with Sublist Items
-          <li data-id="#A01#" data-disabled="#A02#" data-hide="#A03#" data-shortcut="#A05#" data-icon="#ICON_CSS_CLASSES#"><a href="#LINK#" title="#A04#" class="fab-fab fab-btn-sm scale-transition scale-out u-color-#A01#-bg"><span class="#ICON_CSS_CLASSES#"></span></a>
+            <li data-id="#A01#" data-disabled="#A02#" data-hide="#A03#" data-shortcut="#A05#" 
+            data-icon="#ICON_CSS_CLASSES#"><a href="#LINK#" title="#A04#" class="fab-fab fab-btn-sm scale-transition 
+            scale-out u-color-#A01#-bg con-tooltip"><span class="#ICON_CSS_CLASSES#"></span><div class="tooltip">
+            <p>#TEXT#</p>
+            </div></a>
 
 
   2. Go to 'JavaScript' Section  and replace existing codes with these below:
@@ -51,63 +70,97 @@
 
 5. Now Apply the styles in Inline CSS / HTML Header section
    <style>
-      .fab {
-        z-index:100;
-        position: fixed;
-        bottom: 45px;
-        right: 24px;
-        height: 70px;
-      }
-      .fab-fab {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: #009688;
-        vertical-align: middle;
-        text-decoration: none;
-        text-align: center;
-        transition: 0.2s ease-out;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        cursor: pointer;
-        color: #FFF;
-      }
-      .fab-btn-sm > span{
-        margin: 10px;
-      }
-      .fab-fab:hover {
-        background-color: #4db6ac;
-        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
-      }
-      .fab-btn-large {
-        width: 60px;
-        height: 60px;
-        line-height: 60px;
-      }
-      .fab-btn-large > span{
-        vertical-align: text-bottom;
-      }
-      .fab-menu {
-          position: absolute;
-          right: -160px;
-          left: -160px;
-          bottom: 300%;
-          /* transform: translateY(-50%); */
-          /* height: 100%; */
-          /* width: 500px; */
-          list-style: none;
-          text-align: left;
-          rotate: 270deg;
-      }
-      .fab-menu li {
-        display: inline-block;
-        margin-right: 10px;
-      rotate: 90deg;
-      }
-      .scale-transition { transition: transform 0.3s cubic-bezier(0.53, 0.01, 0.36, 1.63) !important; }
-      .scale-transition.scale-out {
-        transform: scale(0);
-        transition: transform 0.2s !important;
-      }
-      .scale-transition.scale-in { transform: scale(1); }
-    </style>
+.fab {
+  z-index:100;
+  position: fixed;
+  bottom: 45px;
+  right: 24px;
+  height: 70px;
+}
+.fab-fab {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #009688;
+  vertical-align: middle;
+  text-decoration: none;
+  text-align: center;
+  transition: 0.2s ease-out;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  color: #FFF;
+}
+.fab-btn-sm > span{
+  margin: 10px;
+}
+.fab-fab:hover {
+  background-color: #4db6ac;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+}
+.fab-btn-large {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+}
+.fab-btn-large > span{
+  vertical-align: text-bottom;
+}
+/* To set menu list to be shown in horizontal then you need to adjust fab-menu & fab-menu li */
+.fab-menu {
+    position: absolute;
+    right: -160px;
+    left: -160px;
+    bottom: 300%;
+    /* transform: translateY(-50%); */
+    /* height: 100%; */
+    /* width: 500px; */
+    list-style: none;
+    text-align: left;
+    rotate: 270deg;  
+}
+.fab-menu li {
+  display: inline-block;
+  margin-right: 10px;
+rotate: 90deg;
+}
+.scale-transition { transition: transform 0.3s cubic-bezier(0.53, 0.01, 0.36, 1.63) !important; }
+.scale-transition.scale-out {
+  transform: scale(0);
+  transition: transform 0.2s !important;
+}
+.scale-transition.scale-in { transform: scale(1); }
+
+/*tooltip */
+.tooltip {
+z-index: 100;
+
+width: max-content;
+padding: 10px 20px;
+
+background: #009688;
+color: #FFF;
+
+position: absolute;
+top: 0px;
+right: 180%;
+border-radius: 9px;
+}
+
+
+/* tooltip  after*/
+.tooltip::after {
+content: " ";
+width: 0;
+height: 0;
+
+border-style: solid;
+border-width: 12px 12.5px 0 12.5px;
+border-color: #009688 transparent transparent transparent;
+
+position: absolute;
+left: 90%;
+top: 40%;
+rotate: -90deg;
+}
+</style>
